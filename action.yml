@@ -1,4 +1,10 @@
 name: 'Run libsodium tests on WasmEdge'
+inputs:
+  wasi-runtime:
+    required: true
+    default: 'node'
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - ${{ inputs.wasi-runtime }}
