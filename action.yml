@@ -1,5 +1,8 @@
 name: 'Run libsodium tests on WasmEdge'
 inputs:
+  path:
+    description: 'workaround for $GITHUB_PATH'
+    required: true
   wasi-runtime:
     required: true
     default: 'node'
