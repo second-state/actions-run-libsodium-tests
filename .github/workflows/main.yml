@@ -3,6 +3,14 @@ on: [push]
 jobs:
   self_testing:
     runs-on: ubuntu-latest
-    name: Self-testing v0.0.0
     steps:
-      - uses: second-state/wasmedge-actions-libsodium-tests@v0.0.0
+      - name: Self-testing v0.0.0
+        uses: second-state/wasmedge-actions-libsodium-tests@v0.0.0
+      - name: Install Node.js
+        run: |
+          wget -O- https://nodejs.org/dist/v16.15.0/node-v16.15.0-linux-x64.tar.xz | tar -Jx
+      - name: Self-testing v0.0.1
+        uses: second-state/wasmedge-actions-libsodium-tests@yi/dev
+        with:
+          path: node-v16.15.0-linux-x64/bin
+          wasi-runtime: node
