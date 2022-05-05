@@ -1,0 +1,4 @@
+name: 'Run libsodium tests on WasmEdge'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
