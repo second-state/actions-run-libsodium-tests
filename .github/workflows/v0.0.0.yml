@@ -1,0 +1,8 @@
+on: [push]
+
+jobs:
+  self_testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Self-testing v0.0.0
+        uses: second-state/wasmedge-actions-libsodium-tests@v0.0.0
