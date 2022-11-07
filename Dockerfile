@@ -1,7 +1,7 @@
 FROM wasmedge/wasmedge:latest
 
 # args
-ARG ZIG=zig-linux-x86_64-0.10.0-dev.430+35423b005.tar.xz
+ARG ZIG=zig-linux-x86_64-0.10.0.tar.xz
 
 WORKDIR /root
 
