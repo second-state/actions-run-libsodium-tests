@@ -1,0 +1,14 @@
+on: [push]
+
+jobs:
+  self_testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Node.js
+        run: |
+          wget -O- https://nodejs.org/dist/v16.15.0/node-v16.15.0-linux-x64.tar.xz | tar -Jx
+      - name: Self-testing
+        uses: second-state/wasmedge-actions-libsodium-tests@main
+        with:
+          path: node-v16.15.0-linux-x64/bin
+          wasi-runtime: node
