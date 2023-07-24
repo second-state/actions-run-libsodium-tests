@@ -1,12 +1,13 @@
 FROM wasmedge/wasmedge:latest
 
 # args
-ARG ZIG=zig-linux-x86_64-0.10.0.tar.xz
+ARG ZIG_VERSION=0.10.1
+ARG ZIG=zig-linux-x86_64-$ZIG_VERSION.tar.xz
 
 WORKDIR /root
 
 # dependencies: Zig
-RUN wget https://ziglang.org/builds/$ZIG
+RUN wget https://ziglang.org/download/$ZIG_VERSION/$ZIG
 RUN mkdir -p .zig \
     && tar xvf $ZIG -C .zig --strip-components=1
 RUN rm $ZIG
