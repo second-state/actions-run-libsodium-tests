@@ -1,0 +1,27 @@
+on: [push]
+
+jobs:
+  self_testing_node:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Node.js
+        run: |
+          wget -O- https://nodejs.org/dist/v14.21.3/node-v14.21.3-linux-x64.tar.xz | tar -Jx
+      - name: Self-testing v0.0.2
+        uses: second-state/wasmedge-actions-libsodium-tests@v0.0.2
+        with:
+          path: node-v14.21.3-linux-x64/bin
+          wasi-runtime: node
+
+  self_testing_wasmedge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install WasmEdge
+        run: |
+          mkdir wasmedge-0.12.1
+          curl -sSf https://raw.githubusercontent.com/WasmEdge/WasmEdge/master/utils/install.sh | bash -s -- -p wasmedge-0.12.1 -v '0.12.1'
+      - name: Self-testing v0.0.2
+        uses: second-state/wasmedge-actions-libsodium-tests@v0.0.2
+        with:
+          path: wasmedge-0.12.1/bin
+          wasi-runtime: wasmedge
